@@ -12,3 +12,6 @@ def productos(req):
 
 def usuarios(req):
     return render(req, "usuarios.html",{})
+
+def turnos(req):
+    return render(req, "turnos.html",{})
