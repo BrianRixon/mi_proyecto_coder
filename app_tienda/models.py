@@ -6,7 +6,7 @@ class Registro(models.Model):
 
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    documento = models.IntegerField(max_length=10)
+    documento = models.IntegerField()
     email = models.EmailField()
 
 
