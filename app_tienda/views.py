@@ -1,32 +1,15 @@
 from django.shortcuts import render
-from .models import Registro
+from django.shortcuts import redirect
+from .models import Registro, Productos
 from django.http import HttpResponse
 from .forms import RegistroFormulario
 # Create your views here.
-
-
-# def form_de_registro(req):
-#     if req.method == 'POST':
-        
-#         mi_formulario = RegistroFormulario(req.POST)
-#         mi_formulario.save()
-
-#         print(mi_formulario)
-
-#         return render(req,'inicio.html')
-    
-#     else:
-#         mi_formulario = RegistroFormulario()
-
-#         return render(req,'registro.html', {"mi_formulario": mi_formulario})
-    
 
 
 def form_de_registro(request):
     if request.method == 'POST':
         nuevo_formulario = RegistroFormulario(request.POST)
         if nuevo_formulario.is_valid():
-            
             nombre = nuevo_formulario.cleaned_data['nombre']
             apellido = nuevo_formulario.cleaned_data['apellido']
             documento = nuevo_formulario.cleaned_data['documento']
@@ -38,8 +21,9 @@ def form_de_registro(request):
                 documento=documento,
                 email=email
             )
-        return render(request, 'base.html',{})
-            
+            # Redirigir después de la creación exitosa
+            return redirect('inicio')
+        
     else:
         nuevo_formulario = RegistroFormulario()
 
@@ -48,19 +32,24 @@ def form_de_registro(request):
 
 
 
+# def buscar_producto(request):
+   
+#    if request.GET["producto"]:
+       
+#     producto= request.GET['producto']
+#     busqueda= Productos.objects.filter(producto__icontains = producto)
 
+#     return render(request, 'resultado_busqueda.html',{"producto":busqueda})
+   
+def buscar_producto(request):
+    producto = request.GET.get("producto", "")
+    
+    if producto:
+        busqueda = Productos.objects.filter(producto__icontains=producto)
+    else:
+        busqueda = Productos.objects.none()  # Devuelve una queryset vacía si no hay producto
 
-
-
-
-
-
-
-
-
-
-
-
+    return render(request, 'buscar_producto.html', {"producto": busqueda})
 
 
 
@@ -86,3 +75,6 @@ def turnos(req):
 
 def registro(req):
     return render(req, "registro.html",{})
+
+def buscar_producto(req):
+    return render(req, "buscar_producto.html",{})

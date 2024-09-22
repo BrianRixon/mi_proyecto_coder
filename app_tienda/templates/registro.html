@@ -3,7 +3,6 @@
 
 {% block contenido_que_cambia %}
 
-<form action="{% url 'form_de_registro' %}" method="POST">{% csrf_token %}
   <form action="{% url 'form_de_registro' %}" method="POST">
     {% csrf_token %}
     <table>
@@ -29,6 +28,5 @@
 
 
     
-</form>
 {% endblock contenido_que_cambia %}
     
