@@ -1,24 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'inicio' %}">Tienda</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'usuarios' %}">usuarios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'productos' %}">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'turnos' %}">Turnos</a>
-          </li>
-        </ul>
-        <span>  
-          <a href="{% url 'registro' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registro</a>
-        </span>
-      </div>
+
+
+
+
+  <!-- Navigation-->
+<nav class="navbar navbar-light bg-light static-top">
+  <div class="container">
+    <div class="home-button">
+      <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
     </div>
-  </nav>
+    <a class="navbar-brand" href="{% url 'usuarios' %}">usuarios</a>
+    <a class="navbar-brand" href="{% url 'productos' %}">productos</a>
+    <a class="navbar-brand" href="{% url 'turnos' %}">turnos</a>
+    <a class="navbar-brand" href="{% url 'registro' %}">registro</a>
+    <a class="btn btn-primary" href="#signup">Iniciar Sesion</a>
+  </div>
+</nav>

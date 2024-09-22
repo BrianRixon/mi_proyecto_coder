@@ -1,31 +1,34 @@
 {% extends 'base.html' %}
 
-{
+
 {% block contenido_que_cambia %}
-<form>
-    <div class="card">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="apellido">Apellido:</label>
-                <input type="text" class="form-control" id="apellido">
-            </div>
-            <div class="form-group">
-                <label for="documento">Documento:</label>
-                <input type="text" class="form-control" id="documento" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="pass">Contraseña:</label>
-                <input type="password" class="form-control" id="pass">
-            </div>
-        &nbsp;
-            <div class="small; text-center">
-                <button type="submit" class="btn btn-primary">registrar</button>
-            </div>
-        </div>
-    </div>
+
+<form action="{% url 'form_de_registro' %}" method="POST">{% csrf_token %}
+  <form action="{% url 'form_de_registro' %}" method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td><label for="nombre">Nombre:</label></td>
+            <td><input type="text" name="nombre" id="nombre" required></td>
+        </tr>
+        <tr>
+            <td><label for="apellido">Apellido:</label></td>
+            <td><input type="text" name="apellido" id="apellido" required></td>
+        </tr>
+        <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="email" name="email" id="email" required></td>
+        </tr>
+        <tr>
+            <td><label for="documento">Documento:</label></td>
+            <td><input type="number" name="documento" id="documento" min="1" required></td>
+        </tr>
+    </table>
+    <button type="submit">Registrar</button>
+</form>
+
+
+    
 </form>
 {% endblock contenido_que_cambia %}
-    }
+    
