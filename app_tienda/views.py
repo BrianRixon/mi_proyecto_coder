@@ -26,20 +26,35 @@ def form_de_registro(request):
             return render(request, 'registro.html', {'nuevo_formulario': nuevo_formulario})
         
     else:
-        nuevo_formulario = RegistroFormulario()
+        mi_formulario = RegistroFormulario()
 
-        return render(request, 'registro.html', {'nuevo_formulario': nuevo_formulario})
+        return render(request, 'registro.html', {'mi_formulario': mi_formulario})
 
+
+
+""" def buscar_usuario(request):
+
+    busqueda = request.get(["nombre"])
+
+    resultados = Registro.objects.filter(resultados__icontains=busqueda)
+
+    
+    return render(request, 'buscar_usuario.html', {'apellido': resultados, 'nombre': busqueda}) """
 
 
 def buscar_usuario(request):
+    busqueda = request.GET.get('nombre', '').strip()
+    resultados = Registro.objects.none()  
 
-    busqueda = request.get(["nombre","apellido"])
+    if busqueda:
+        # Filtra por nombre o apellido
+        resultados = Registro.objects.filter(nombre__icontains=busqueda) | Registro.objects.filter(apellido__icontains=busqueda)
 
-    resultado = Registro.objects.filter(busqueda__icontains=busqueda)
+    # Renderiza la respuesta
+    return render(request, 'buscar_usuario.html', {'resultados': resultados, 'busqueda': busqueda})
 
-    return render(request, "buscar_usuario.html",{"resultado":resultado, "busqueda": busqueda} )
-    
+
+
 
 
 
@@ -67,3 +82,4 @@ def buscar_usuario(req):
 
 def registro_exitoso(req):
     return render(req, "registro_exitoso.html",{})
+

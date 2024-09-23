@@ -1,23 +1,19 @@
 {% extends 'base.html' %}
 
-<p> resultado de busqueda:</p>
+
 
 {% block contenido_que_cambia %}
-
-{% if busqueda %}
+<p> resultado de busqueda:</p>
+  {% if resultados %}
     <ul>
-        {% for busqueda  in busqueda %}
-
-        <li>
-            {{busqueda.nombre}} - {{busqueda.apellido}}
-        </li>
-            
-        {% endfor %}   
+      {% for resultado in resultados %}
+        <li>{{resultado.nombre}} - {{resultado.apellido}}</li>
+      {% endfor %}
     </ul>
-    {% else %}
-        <p>esos usuarios no estan registrados</p>
+  {% else %}
+    <p>No se encontraron cursos con esos datos de búsqueda</p>
 
-{% endif %}
+  {% endif %}
     
     
 {% endblock contenido_que_cambia %}

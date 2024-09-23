@@ -2,9 +2,9 @@
 
 {% block contenido_que_cambia %}
             
-<form action="{% url 'buscar_usuario' %}">
-  <input type="text" name="nombre" id="nombre">
-  <input type="submit" value="Buscar">
+<form action="{% url 'buscar_usuario' %}" method="GET">
+  INGRESE NOMBRE O APELLIDO:<input type="text" name="nombre" >
+  <button type="submit">Buscar</button>
 </form>
 
 
