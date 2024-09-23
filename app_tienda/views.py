@@ -8,21 +8,17 @@ from .forms import RegistroFormulario
 
 def form_de_registro(request):
     if request.method == 'POST':
-        nuevo_formulario = RegistroFormulario(request.POST)
-        if nuevo_formulario.is_valid():
-            nombre = nuevo_formulario.cleaned_data['nombre']
-            apellido = nuevo_formulario.cleaned_data['apellido']
-            documento = nuevo_formulario.cleaned_data['documento']
-            email = nuevo_formulario.cleaned_data['email']
 
-            Registro.objects.create(
-                nombre=nombre,
-                apellido=apellido,
-                documento=documento,
-                email=email
-            )
+        nuevo_formulario = RegistroFormulario(request.POST)
+
+        if nuevo_formulario.is_valid():
+            data= nuevo_formulario.cleaned_data
+
+            nuevo_usuario= Registro(nombre=data["nombre"], apellido=data["apellido"], documento=data["documento"], email=data["email"])
+            nuevo_usuario.save()
+
             # Redirigir después de la creación exitosa
-            return redirect('inicio')
+            return render(request,'registro_nuevo.html')
         
     else:
         nuevo_formulario = RegistroFormulario()
@@ -78,3 +74,6 @@ def registro(req):
 
 def buscar_producto(req):
     return render(req, "buscar_producto.html",{})
+
+def registro_nuevo(req):
+    return render(req, "registro_nuevo.html",{})
