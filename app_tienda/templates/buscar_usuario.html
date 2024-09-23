@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<p> resultado de busqueda:</p>
+
+{% block contenido_que_cambia %}
+
+{% if busqueda %}
+    <ul>
+        {% for busqueda  in busqueda %}
+
+        <li>
+            {{busqueda.nombre}} - {{busqueda.apellido}}
+        </li>
+            
+        {% endfor %}   
+    </ul>
+    {% else %}
+        <p>esos usuarios no estan registrados</p>
+
+{% endif %}
+    
+    
+{% endblock contenido_que_cambia %}
+    
+    

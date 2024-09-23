@@ -32,14 +32,14 @@ def form_de_registro(request):
 
 
 
-def buscar_producto(request):
+def buscar_usuario(request):
+
+    busqueda = request.get(["nombre","apellido"])
+
+    resultado = Registro.objects.filter(busqueda__icontains=busqueda)
+
+    return render(request, "buscar_usuario.html",{"resultado":resultado, "busqueda": busqueda} )
     
-    pass
-
-
-
-
-
 
 
 
@@ -62,8 +62,8 @@ def turnos(req):
 def registro(req):
     return render(req, "registro.html",{})
 
-def buscar_producto(req):
-    return render(req, "buscar_producto.html",{})
+def buscar_usuario(req):
+    return render(req, "buscar_usuario.html",{})
 
 def registro_exitoso(req):
     return render(req, "registro_exitoso.html",{})
