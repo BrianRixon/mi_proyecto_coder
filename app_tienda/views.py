@@ -32,26 +32,16 @@ def form_de_registro(request):
 
 
 
-""" def buscar_usuario(request):
+def buscar_usuario(request):
 
-    busqueda = request.get(["nombre"])
+     busqueda = request.GET["nombre"]
 
-    resultados = Registro.objects.filter(resultados__icontains=busqueda)
+     resultados = Registro.objects.filter(nombre__icontains=busqueda)
 
     
-    return render(request, 'buscar_usuario.html', {'apellido': resultados, 'nombre': busqueda}) """
+     return render(request, "buscar_usuario.html", {"resultados": resultados})
+ 
 
-
-def buscar_usuario(request):
-    busqueda = request.GET.get('nombre', '').strip()
-    resultados = Registro.objects.none()  
-
-    if busqueda:
-        # Filtra por nombre o apellido
-        resultados = Registro.objects.filter(nombre__icontains=busqueda) | Registro.objects.filter(apellido__icontains=busqueda)
-
-    # Renderiza la respuesta
-    return render(request, 'buscar_usuario.html', {'resultados': resultados, 'busqueda': busqueda})
 
 
 
