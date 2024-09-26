@@ -67,8 +67,8 @@ def turnos(req):
 def registro(req):
     return render(req, "registro.html",{})
 
-def buscar_usuario(req):
-    return render(req, "buscar_usuario.html",{})
+# def buscar_usuario(req):
+#     return render(req, "buscar_usuario.html",{})
 
 def registro_exitoso(req):
     return render(req, "registro_exitoso.html",{})
