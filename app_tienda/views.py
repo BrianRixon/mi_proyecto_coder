@@ -31,7 +31,7 @@ def form_de_registro(request):
         return render(request, 'registro.html', {'mi_formulario': mi_formulario})
 
 
-
+# busca usuario
 def buscar_usuario(request):
 
      busqueda = request.GET["nombre"]
@@ -67,8 +67,6 @@ def turnos(req):
 def registro(req):
     return render(req, "registro.html",{})
 
-# def buscar_usuario(req):
-#     return render(req, "buscar_usuario.html",{})
 
 def registro_exitoso(req):
     return render(req, "registro_exitoso.html",{})
